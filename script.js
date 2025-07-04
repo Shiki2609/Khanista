@@ -13,10 +13,10 @@ document.querySelectorAll('nav a').forEach(anchor => {
 let lastScrollY = window.scrollY;
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > lastScrollY && window.scrollY > 100) {
-    header.style.top = '-140px'; // hide (adjust to header height)
+  if (window.scrollY > lastScrollY && window.scrollY > 64) {
+    header.classList.add('hide-header');
   } else {
-    header.style.top = '0';
+    header.classList.remove('hide-header');
   }
   lastScrollY = window.scrollY;
 });
@@ -224,6 +224,21 @@ cartItemsDisplay.addEventListener('click', (event) => {
     }
 });
 
+const cartBtn = document.getElementById('viewCartBtn');
+const cartModal = document.getElementById('cartModal');
+const closeBtn = document.querySelector('.close-button');
+
+cartBtn.addEventListener('click', () => {
+  cartModal.style.display = 'flex';
+});
+closeBtn.addEventListener('click', () => {
+  cartModal.style.display = 'none';
+});
+window.addEventListener('click', (e) => {
+  if (e.target === cartModal) {
+    cartModal.style.display = 'none';
+  }
+});
 // Send order via WhatsApp
 sendOrderWhatsAppBtn.addEventListener('click', () => {
     if (cart.length === 0) {
@@ -289,14 +304,13 @@ sendOrderWhatsAppBtn.addEventListener('click', () => {
     updateCartDisplay(); // Update display to show empty cart
 });
 
-// Mobile Hamburger Menu
 const hamburger = document.getElementById('hamburger-menu');
-const navUl = document.querySelector('nav ul');
+const navUl = document.getElementById('nav-list');
 hamburger.addEventListener('click', () => {
   navUl.classList.toggle('open');
   hamburger.classList.toggle('open');
 });
-document.querySelectorAll('nav ul li a').forEach(link => {
+document.querySelectorAll('#nav-list li a').forEach(link => {
   link.addEventListener('click', () => {
     navUl.classList.remove('open');
     hamburger.classList.remove('open');
