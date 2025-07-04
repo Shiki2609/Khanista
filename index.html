@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khanista - Delicious Halal Food</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/khanista-logo.png" type="image/png">
-    <!-- Font Awesome for cart icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khanista - Delicious Halal Food</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/khanista-logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header id="main-header">
-        <div class="container">
-            <div class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <img src="images/khanista-logo.png" alt="Khanista Logo" class="logo">
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="cart-icon" id="viewCartBtn">
-                <i class="fas fa-shopping-cart"></i>
-                <span id="cart-count" class="cart-count">0</span>
-            </div>
-        </div>
-    </header>
+  <header id="main-header">
+    <div class="container nav-container">
+      <div class="logo-area">
+        <img src="images/khanista-logo.png" alt="Khanista Logo" class="logo">
+      </div>
+      <nav>
+        <ul id="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="cart-icon" id="viewCartBtn" aria-label="View Cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
+      <button class="hamburger" id="hamburger-menu" aria-label="Open Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
+  <main>
     <section id="home" class="hero">
-        <div class="container">
-            <img src="images/khanista-logo.png" alt="Khanista Logo" class="hero-logo">
-            <h1>Welcome to Khanista</h1>
-            <p>Your destination for delicious, S.A.N.H.A. certified Halal meals.</p>
-            <a href="#menu" class="btn">View Our Menu</a>
-        </div>
+      <div class="container hero-container">
+        <img src="images/khanista-logo.png" alt="Khanista Logo" class="hero-logo">
+        <h1>Welcome to Khanista</h1>
+        <p>Your destination for delicious, S.A.N.H.A. certified Halal meals.</p>
+        <a href="#menu" class="btn">View Our Menu</a>
+      </div>
     </section>
 
     <section id="menu" class="menu-section">
@@ -467,38 +467,35 @@
             </div>
         </div>
     </section>
-
+  </main>
     <footer>
         <div class="container">
             <p>© 2025 Khanista. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Cart Modal -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">×</span>
-            <h2>Your Cart</h2>
-            <div id="cartItemsDisplay">
-                <!-- Cart items will be dynamically inserted here by JavaScript -->
-                <p>Your cart is empty.</p>
-            </div>
-            <div class="cart-summary">
-                <p>Total: <span id="cartTotal">R0.00</span></p>
-            </div>
-            <div class="customer-details-form">
-                <h3>Your Details</h3>
-                <label for="customerName">Your Name:</label>
-                <input type="text" id="customerName" required>
-                <label for="customerPhone">Your Phone Number (WhatsApp):</label>
-                <input type="tel" id="customerPhone" placeholder="e.g., 0821234567" required>
-                <label for="notes">Special Notes (Optional):</label>
-                <textarea id="notes" rows="3"></textarea>
-            </div>
-            <button id="sendOrderWhatsApp" class="btn">Send Order via WhatsApp</button>
-        </div>
+     <!-- Cart Modal -->
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">×</span>
+      <h2>Your Cart</h2>
+      <div id="cartItemsDisplay">
+        <p>Your cart is empty.</p>
+      </div>
+      <div class="cart-summary">
+        <p>Total: <span id="cartTotal">R0.00</span></p>
+      </div>
+      <div class="customer-details-form">
+        <h3>Your Details</h3>
+        <label for="customerName">Your Name:</label>
+        <input type="text" id="customerName" required>
+        <label for="customerPhone">Your Phone Number (WhatsApp):</label>
+        <input type="tel" id="customerPhone" placeholder="e.g., 0821234567" required>
+        <button id="sendOrderWhatsApp" class="btn">Order via WhatsApp</button>
+      </div>
     </div>
-
-    <script src="script.js"></script>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
