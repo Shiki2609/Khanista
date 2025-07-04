@@ -227,6 +227,14 @@ nav ul li a:hover {
   nav ul { gap: 18px; }
   .cart-icon { margin-left: 12px; }
 }
+@media (max-width: 768px) {
+  body {
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    width: 200vw;
+    height: 200vh;
+    overflow-x: auto;
+}
 
 @media (max-width: 768px) {
   header#main-header {
