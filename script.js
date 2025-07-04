@@ -9,6 +9,18 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
+// Hide header on scroll down, show on scroll up
+let lastScrollY = window.scrollY;
+const header = document.getElementById('main-header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > lastScrollY && window.scrollY > 100) {
+    header.style.top = '-140px'; // hide (adjust to header height)
+  } else {
+    header.style.top = '0';
+  }
+  lastScrollY = window.scrollY;
+});
+
 // --- WhatsApp Ordering System with Cart ---
 
 // Selectors for elements
@@ -275,6 +287,20 @@ sendOrderWhatsAppBtn.addEventListener('click', () => {
     cartModal.style.display = 'none'; // Close modal after sending
     cart = []; // Clear cart after order is sent
     updateCartDisplay(); // Update display to show empty cart
+});
+
+// Mobile Hamburger Menu
+const hamburger = document.getElementById('hamburger-menu');
+const navUl = document.querySelector('nav ul');
+hamburger.addEventListener('click', () => {
+  navUl.classList.toggle('open');
+  hamburger.classList.toggle('open');
+});
+document.querySelectorAll('nav ul li a').forEach(link => {
+  link.addEventListener('click', () => {
+    navUl.classList.remove('open');
+    hamburger.classList.remove('open');
+  });
 });
 
 // Initial update of cart count on page load
