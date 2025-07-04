@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khanista - Delicious Halal Food</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/khanista-logo.png" type="image/png">
+    <!-- Font Awesome for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/khanista-logo.png" alt="Khanista Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" id="viewCartBtn">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="images/khanista-logo.png" alt="Khanista Logo" class="hero-logo">
+            <h1>Welcome to Khanista</h1>
+            <p>Your destination for delicious, S.A.N.H.A. certified Halal meals.</p>
+            <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Our Delicious Menu</h2>
+
+            <div class="menu-category">
+                <h3>Samoosas</h3>
+                <div class="menu-item">
+                    <img src="images/samoosas.jpg" alt="Samoosas">
+                    <div class="item-details">
+                        <h4>Samoosas x3</h4>
+                        <p>Choice of Mince / Chicken / Potato / Sweetcorn</p>
+                        <span class="price">R15</span>
+                        <button class="add-to-cart-btn" data-item-id="samoosas-x3" data-item-name="Samoosas x3" data-item-price="15">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+            <h3>Burgers</h3>
+            <div class="menu-item">
+                <img src="images/burger.jpg" alt="Burger">
+                <div class="item-details">
+                    <h4>Classic Burger</h4>
+                    <p>Served with home-style chips and unique sauce</p>
+                    <div class="pizza-options">
+                        <div class="size-toggle-group" data-base-id="classic-burger">
+                            <button class="size-toggle-btn active" data-type="chicken" data-price="60">Chicken</button>
+                            <button class="size-toggle-btn" data-type="mutton" data-price="60">Mutton</button>
+                        </div>
+                        <span class="current-pizza-price">R60</span>
+                    </div>
+                    <button class="add-to-cart-btn" data-item-id="classic-burger-chicken" data-item-name="Classic Burger (Chicken)" data-item-price="60">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Subs</h3>
+                <div class="menu-item">
+                    <img src="images/chicken-sub.jpg" alt="Chicken Sub">
+                    <div class="item-details">
+                        <h4>Chicken Sub</h4>
+                        <p>Chicken, secret sauce, spices, peppers, hint of chili & cheese</p>
+                        <span class="price">R90</span>
+                        <button class="add-to-cart-btn" data-item-id="chicken-sub" data-item-name="Chicken Sub" data-item-price="90">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/steak-sub.jpg" alt="Steak Sub">
+                    <div class="item-details">
+                        <h4>Steak Sub</h4>
+                        <p>Steak, secret sauce, pepper, onion & cheese</p>
+                        <span class="price">R90</span>
+                        <button class="add-to-cart-btn" data-item-id="steak-sub" data-item-name="Steak Sub" data-item-price="90">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/soya-sub.jpg" alt="Soya Sub">
+                    <div class="item-details">
+                        <h4>Soya Sub</h4>
+                        <p>Soya chunks, meatless flavor, topped with cheese</p>
+                        <span class="price">R80</span>
+                        <button class="add-to-cart-btn" data-item-id="soya-sub" data-item-name="Soya Sub" data-item-price="80">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Pizzas</h3>
+                <h4>Steak Pizzas</h4>
+
+                <!-- BBQ Steak Pizza -->
+                <div class="menu-item">
+                    <img src="images/steak-pizza.jpg" alt="BBQ Steak Pizza">
+                    <div class="item-details">
+                        <h4>BBQ Steak Pizza</h4>
+                        <p>Steak with BBQ spice and sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="bbq-steak">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="bbq-steak-med" data-item-name="BBQ Steak Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Steak & Mushroom Pizza -->
+                <div class="menu-item">
+                    <img src="images/steak-pizza.jpg" alt="Steak & Mushroom Pizza">
+                    <div class="item-details">
+                        <h4>Steak & Mushroom Pizza</h4>
+                        <p>Steak, mushroom, pepper, red onion, jalapeños</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="steak-mushroom">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="steak-mushroom-med" data-item-name="Steak & Mushroom Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Prego Steak Pizza -->
+                <div class="menu-item">
+                    <img src="images/steak-pizza.jpg" alt="Prego Steak Pizza">
+                    <div class="item-details">
+                        <h4>Prego Steak Pizza</h4>
+                        <p>Spicy steak, bell pepper, red onion, chili, prego sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="prego-steak">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="prego-steak-med" data-item-name="Prego Steak Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Steak Peri Peri Pizza -->
+                <div class="menu-item">
+                    <img src="images/steak-pizza.jpg" alt="Steak Peri Peri Pizza">
+                    <div class="item-details">
+                        <h4>Steak Peri Peri Pizza</h4>
+                        <p>Steak with chili, jalapeños, onion, peri-peri sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="steak-peri-peri">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="steak-peri-peri-med" data-item-name="Steak Peri Peri Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Steak Surprise Pizza -->
+                <div class="menu-item">
+                    <img src="images/steak-pizza.jpg" alt="Steak Surprise Pizza">
+                    <div class="item-details">
+                        <h4>Steak Surprise Pizza</h4>
+                        <p>Steak with secret sauce, basil, red onion, yellow pepper, jalapeños</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="steak-surprise">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="steak-surprise-med" data-item-name="Steak Surprise Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+
+                <h4>Chicken Pizzas</h4>
+                <!-- BBQ Chicken Pizza -->
+                <div class="menu-item">
+                    <img src="images/chicken-pizza.jpg" alt="BBQ Chicken Pizza">
+                    <div class="item-details">
+                        <h4>BBQ Chicken Pizza</h4>
+                        <p>Chicken with BBQ spice and sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="bbq-chicken">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="bbq-chicken-med" data-item-name="BBQ Chicken Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Chicken & Mushroom Pizza -->
+                <div class="menu-item">
+                    <img src="images/chicken-pizza.jpg" alt="Chicken & Mushroom Pizza">
+                    <div class="item-details">
+                        <h4>Chicken & Mushroom Pizza</h4>
+                        <p>Chicken, mushrooms, pepper, red onion, jalapeños</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="chicken-mushroom">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="chicken-mushroom-med" data-item-name="Chicken & Mushroom Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Prego Chicken Pizza -->
+                <div class="menu-item">
+                    <img src="images/chicken-pizza.jpg" alt="Prego Chicken Pizza">
+                    <div class="item-details">
+                        <h4>Prego Chicken Pizza</h4>
+                        <p>Spicy chicken, pepper, red onion, prego sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="prego-chicken">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="prego-chicken-med" data-item-name="Prego Chicken Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Chicken Peri Peri Pizza -->
+                <div class="menu-item">
+                    <img src="images/chicken-pizza.jpg" alt="Chicken Peri Peri Pizza">
+                    <div class="item-details">
+                        <h4>Chicken Peri Peri Pizza</h4>
+                        <p>Chili chicken, jalapeños, onion, peri-peri sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="chicken-peri-peri">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="chicken-peri-peri-med" data-item-name="Chicken Peri Peri Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Chicken Mayo Pizza -->
+                <div class="menu-item">
+                    <img src="images/chicken-pizza.jpg" alt="Chicken Mayo Pizza">
+                    <div class="item-details">
+                        <h4>Chicken Mayo Pizza</h4>
+                        <p>Chicken with mayo and herbs</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="chicken-mayo">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="chicken-mayo-med" data-item-name="Chicken Mayo Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Chicken Surprise Pizza -->
+                <div class="menu-item">
+                    <img src="images/chicken-pizza.jpg" alt="Chicken Surprise Pizza">
+                    <div class="item-details">
+                        <h4>Chicken Surprise Pizza</h4>
+                        <p>Chicken with secret sauce, basil, red pepper, onion, jalapeños</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="chicken-surprise">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="chicken-surprise-med" data-item-name="Chicken Surprise Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+
+                <h4>Vegan Pizzas</h4>
+                <!-- Margherita Pizza -->
+                <div class="menu-item">
+                    <img src="images/vegan-pizza.jpg" alt="Margherita Pizza">
+                    <div class="item-details">
+                        <h4>Margherita Pizza</h4>
+                        <p>Tangy tomato base with mozzarella</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="margherita">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="margherita-med" data-item-name="Margherita Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Mushroom Wonder Pizza -->
+                <div class="menu-item">
+                    <img src="images/vegan-pizza.jpg" alt="Mushroom Wonder Pizza">
+                    <div class="item-details">
+                        <h4>Mushroom Wonder Pizza</h4>
+                        <p>Mushrooms with fragrant melted cheese</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="mushroom-wonder">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="mushroom-wonder-med" data-item-name="Mushroom Wonder Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Prego Soya Pizza -->
+                <div class="menu-item">
+                    <img src="images/vegan-pizza.jpg" alt="Prego Soya Pizza">
+                    <div class="item-details">
+                        <h4>Prego Soya Pizza</h4>
+                        <p>Spicy soya chunks, bell pepper, onion, prego sauce</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="prego-soya">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="prego-soya-med" data-item-name="Prego Soya Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Soya & Mushroom Pizza -->
+                <div class="menu-item">
+                    <img src="images/vegan-pizza.jpg" alt="Soya & Mushroom Pizza">
+                    <div class="item-details">
+                        <h4>Soya & Mushroom Pizza</h4>
+                        <p>Soya, mushroom, pepper, onion, chili flakes, jalapeños</p>
+                        <div class="pizza-options">
+                            <div class="size-toggle-group" data-base-id="soya-mushroom">
+                                <button class="size-toggle-btn active" data-size="med" data-price="50">Medium (R50)</button>
+                                <button class="size-toggle-btn" data-size="lar" data-price="90">Large (R90)</button>
+                            </div>
+                            <span class="current-pizza-price">R50</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-item-id="soya-mushroom-med" data-item-name="Soya & Mushroom Pizza (Medium)" data-item-price="50">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Wraps</h3>
+                <div class="menu-item">
+                    <img src="images/wrap.jpg" alt="Wrap">
+                    <div class="item-details">
+                        <h4>Wrap</h4>
+                        <p>Steak or chicken in secret sauces and chips. Add in R5 for cheese.</p>
+                        <span class="price">R60</span>
+                        <button class="add-to-cart-btn" data-item-id="wrap" data-item-name="Wrap" data-item-price="60">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Calzones</h3>
+                <div class="menu-item">
+                    <img src="images/calzone.jpg" alt="Chicken Calzone">
+                    <div class="item-details">
+                        <h4>Chicken Calzone</h4>
+                        <p>Chicken, onion, pepper, white sauce & cheese</p>
+                        <span class="price">R75</span>
+                        <button class="add-to-cart-btn" data-item-id="chicken-calzone" data-item-name="Chicken Calzone" data-item-price="75">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/calzone.jpg" alt="Steak Calzone">
+                    <div class="item-details">
+                        <h4>Steak Calzone</h4>
+                        <p>Steak, onion, pepper, white sauce & cheese</p>
+                        <span class="price">R75</span>
+                        <button class="add-to-cart-btn" data-item-id="steak-calzone" data-item-name="Steak Calzone" data-item-price="75">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/calzone.jpg" alt="Soya Calzone">
+                    <div class="item-details">
+                        <h4>Soya Calzone</h4>
+                        <p>Soya, onion, pepper, white sauce & cheese</p>
+                        <span class="price">R65</span>
+                        <button class="add-to-cart-btn" data-item-id="soya-calzone" data-item-name="Soya Calzone" data-item-price="65">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Gatsby</h3>
+                <div class="menu-item">
+                    <img src="images/gatsby.jpg" alt="Gatsby">
+                    <div class="item-details">
+                        <h4>Gatsby</h4>
+                        <p>Chicken or Steak in secret sauces and chips and salsa</p>
+                        <span class="price">R80</span>
+                        <button class="add-to-cart-btn" data-item-id="gatsby" data-item-name="Gatsby" data-item-price="80">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <p>"Khanista's pizzas are absolutely divine! The Steak Peri Peri is my go-to. Always fresh and packed with flavor."</p>
+                    <p class="customer-name">- Aisha K.</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"The Chicken Sub is a game changer. So much flavor and the secret sauce is incredible. Highly recommend!"</p>
+                    <p class="customer-name">- Thabo M.</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Being S.A.N.H.A. certified is a huge plus for me. The food is consistently good and the samoosas are a must-try."</p>
+                    <p class="customer-name">- Fatima S.</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Finally found a place that makes a proper Gatsby! Khanista's version is authentic and delicious. Great value too."</p>
+                    <p class="customer-name">- Sipho D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Khanista</h2>
+            <p>Khanista offers a delectable range of Halal meals, including pizzas, subs, burgers, samoosas, wraps, calzones, and gatsbys. We are committed to providing high-quality, flavorful food to our community.</p>
+            <p>All our products are S.A.N.H.A. certified Halal.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>For orders and collections, please reach out to us:</p>
+            <p><strong>Address:</strong> 41 Granada Street</p>
+            <p><strong>Cell:</strong> <a href="tel:0691027773">069 102 7773</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/27788852245" target="_blank">078 885 2245</a></p>
+            <p class="note">Order and collect only.</p>
+            <div class="map-placeholder">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.77161726978!2d30.871900315091216!3d-29.88219468194488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7a44f5a3e1c6b%3A0x6b4f7a7d4d4b1f6!2s41%20Granada%20St%2C%20Bayview%2C%20Durban%2C%204093%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1678888888888!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Khanista. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Your Cart</h2>
+            <div id="cartItemsDisplay">
+                <!-- Cart items will be dynamically inserted here by JavaScript -->
+                <p>Your cart is empty.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total: <span id="cartTotal">R0.00</span></p>
+            </div>
+            <div class="customer-details-form">
+                <h3>Your Details</h3>
+                <label for="customerName">Your Name:</label>
+                <input type="text" id="customerName" required>
+                <label for="customerPhone">Your Phone Number (WhatsApp):</label>
+                <input type="tel" id="customerPhone" placeholder="e.g., 0821234567" required>
+                <label for="notes">Special Notes (Optional):</label>
+                <textarea id="notes" rows="3"></textarea>
+            </div>
+            <button id="sendOrderWhatsApp" class="btn">Send Order via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

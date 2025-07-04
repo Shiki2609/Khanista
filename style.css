@@ -1,0 +1,1305 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700;900&display=swap');
+
+/* CSS Variables for Unique Color Palette and Design Elements */
+:root {
+    --primary-color: #6F3F2F; /* Deep Brown/Maroon - from logo */
+    --accent-green: #4CAF50; /* Halal Green - prominent accent */
+    --accent-orange: #D2825A; /* Warm Terracotta - secondary accent */
+
+    --background-light: #F8F8F8; /* Crisp Off-White */
+    --background-dark: #EDEDED; /* Light Gray for subtle section contrast */
+    --text-dark: #222222; /* Near Black for sharp contrast */
+    --text-light: #FFFFFF; /* White */
+
+    --dark-overlay: rgba(0, 0, 0, 0.88); /* Stronger overlay for hero/modal */
+
+    /* Shadows for depth and modern feel */
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --shadow-strong: 0 18px 45px rgba(0, 0, 0, 0.25);
+    --shadow-pop: 0 25px 60px rgba(0, 0, 0, 0.35); /* Even stronger pop shadow */
+
+    /* Border Radii for elements */
+    --border-radius-card: 20px;
+    --border-radius-btn: 12px;
+    --border-radius-input: 8px;
+}
+
+/* Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure box model is consistent */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.8; /* Generous line height for readability */
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    text-rendering: optimizeLegibility; /* Better font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1280px; /* Slightly wider container */
+    margin: 0 auto;
+    padding: 0 40px; /* More horizontal padding for spaciousness */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    line-height: 1.2;
+    letter-spacing: -0.03em; /* Tighten letter spacing for headings */
+}
+
+h1 {
+    font-size: 5.5em; /* Larger and more impactful */
+    text-shadow: 3px 4px 10px var(--dark-overlay); /* Defined shadow */
+    text-align: center;
+    color: var(--text-light); /* White for hero H1 */
+    font-weight: 900; /* Extra bold for impact */
+}
+
+h2 {
+    font-size: 4em; /* More prominent section titles */
+    text-align: center;
+    margin-bottom: 70px; /* More space below section headings */
+    position: relative;
+    padding-bottom: 20px;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 150px; /* Wider, more modern underline */
+    height: 6px; /* Thicker underline */
+    background-color: var(--accent-green);
+    border-radius: 3px;
+}
+
+h3 {
+    font-size: 3.2em; /* Stronger category titles */
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    position: relative;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Subtle underline for categories */
+    height: 3px;
+    background-color: var(--accent-orange);
+    border-radius: 2px;
+}
+
+h4 {
+    font-size: 2.4em; /* Item titles */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em; /* Slightly larger body text */
+    color: #444;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-green);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    padding: 18px 40px; /* Larger, more substantial buttons */
+    border: none;
+    border-radius: var(--border-radius-btn);
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    text-decoration: none;
+    position: relative; /* For subtle pseudo-element effect */
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Subtle hover overlay */
+    transition: left 0.3s ease;
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+.btn:hover {
+    background-color: #3e8e41;
+    transform: translateY(-7px); /* More pronounced lift effect */
+    box-shadow: 0 15px 35px var(--shadow-strong);
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 30px 0; /* Increased padding */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 25px var(--shadow-strong);
+    border-bottom: 5px solid var(--accent-orange); /* Stronger bottom accent */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 80px; /* Larger logo */
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3)); /* Subtle shadow for logo */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 45px; /* More spacing between nav items */
+}
+
+nav ul li a {
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 1.25em;
+    transition: color 0.3s ease, border-bottom 0.3s ease, transform 0.2s ease;
+    padding-bottom: 12px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-green);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: var(--accent-green);
+    transform: translateY(-3px);
+}
+
+/* Cart Icon in Header */
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 2.5em; /* Larger icon */
+    margin-left: 40px;
+    padding: 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-icon:hover {
+    color: var(--accent-green);
+    transform: scale(1.25);
+}
+
+.cart-count {
+    position: absolute;
+    top: -12px;
+    right: -18px;
+    background-color: var(--accent-orange);
+    color: var(--text-light);
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    min-width: 32px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border: 3px solid var(--text-light); /* More prominent border */
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), url('images/hero-bg.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: var(--text-light);
+    text-align: center;
+    padding: 180px 40px; /* More generous padding */
+    min-height: 800px; /* Taller hero for impact */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* For subtle background patterns if added */
+}
+
+.hero p {
+    font-size: 2em; /* Larger, more impactful description */
+    margin-bottom: 70px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255,255,255,0.95);
+    font-weight: 300; /* Lighter weight for balance */
+}
+
+
+/* Section Common Styles */
+section {
+    padding: 140px 0; /* More vertical padding for all sections */
+    background-color: var(--background-dark);
+    position: relative;
+    z-index: 1; /* Ensure sections stack correctly with dividers */
+}
+
+section:nth-of-type(odd) {
+    background-color: var(--background-light);
+}
+
+/* Unique Section Divider - Example using pseudo-elements */
+.section-divider-top::before, .section-divider-bottom::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 80px; /* Height of the divider */
+    background-color: inherit; /* Inherit current section background */
+    z-index: -1;
+}
+
+.section-divider-top::before {
+    top: -40px; /* Halfway up the previous section */
+    transform: skewY(-2deg); /* Subtle diagonal cut */
+    transform-origin: top left;
+}
+
+.section-divider-bottom::after {
+    bottom: -40px; /* Halfway into the next section */
+    transform: skewY(-2deg); /* Subtle diagonal cut */
+    transform-origin: bottom right;
+}
+
+/* Apply section dividers to relevant sections */
+#menu, #testimonials, #about, #contact {
+    position: relative;
+}
+#menu::before {
+    content: '';
+    position: absolute;
+    top: -70px; /* Adjust based on section padding and desired overlap */
+    left: 0;
+    width: 100%;
+    height: 100px; /* Height of the divider band */
+    background-color: var(--background-dark); /* Color of the band */
+    transform: skewY(-2deg); /* Unique angle */
+    transform-origin: top left;
+    z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+#testimonials::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--background-light);
+    transform: skewY(2deg); /* Opposite angle */
+    transform-origin: top right;
+    z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--background-dark);
+    transform: skewY(-2deg);
+    transform-origin: top left;
+    z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+/* No divider for contact section top as it's the last content section */
+
+
+/* Menu Section */
+.menu-category {
+    margin-bottom: 120px; /* More space between categories */
+    padding: 50px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* More space between image and details */
+    margin-bottom: 50px;
+    background-color: var(--text-light);
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 15px 40px var(--shadow-soft); /* Softer, more modern shadow */
+    padding: 35px; /* More padding inside card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Add border-color transition */
+    border: 3px solid var(--background-dark); /* Initial border */
+    position: relative; /* For brand accent */
+}
+
+/* Brand Accent on Menu Items - "Screams Khanista" with color change */
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px; /* Thicker initial accent strip */
+    height: 100%;
+    background-color: var(--accent-orange); /* Orange accent */
+    border-radius: var(--border-radius-card) 0 0 var(--border-radius-card); /* Rounded top-left, bottom-left */
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-15px); /* More pronounced lift effect */
+    box-shadow: 0 28px 65px var(--shadow-pop); /* Stronger, more popping shadow */
+    border-color: var(--accent-green); /* Border changes to green on hover */
+}
+
+.menu-item:hover::before {
+    background-color: var(--primary-color); /* Accent changes to primary brown on hover */
+    width: 15px; /* Slightly wider on hover */
+}
+
+
+.menu-item img {
+    width: 220px; /* Larger images */
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 4px solid var(--background-dark);
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-details p {
+    font-size: 1.15em;
+    color: #555;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.price {
+    font-size: 2.2em; /* Larger, more prominent price */
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-right: 25px;
+    letter-spacing: -0.02em;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: var(--accent-green);
+    padding: 14px 30px;
+    font-size: 1.15em;
+    border-radius: var(--border-radius-btn);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.add-to-cart-btn:hover {
+    background-color: #3e8e41;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* --- Pizza Size Toggle Styles --- */
+.pizza-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.size-toggle-group {
+    display: flex;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius-btn);
+    overflow: hidden;
+    position: relative;
+    background-color: var(--background-dark);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.size-toggle-btn {
+    flex: 1;
+    padding: 16px 30px; /* More padding */
+    border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+    letter-spacing: 0.5px;
+}
+
+.size-toggle-btn.active {
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transform: scale(1.06);
+    z-index: 1;
+}
+
+.size-toggle-btn:not(.active):hover {
+    background-color: var(--background-light);
+    color: var(--accent-orange);
+    transform: translateY(-3px);
+}
+
+.current-pizza-price {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-left: 0;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--background-light);
+    padding: 140px 0;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Larger min-width */
+    gap: 45px; /* More space between testimonials */
+    margin-top: 60px;
+}
+
+.testimonial-item {
+    background-color: var(--text-light);
+    padding: 45px; /* More padding */
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 15px 40px var(--shadow-soft);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 3px solid var(--background-dark); /* Initial border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brand Accent on Testimonial Items - "Screams Khanista" */
+.testimonial-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px; /* Accent bar at the top */
+    background-color: var(--accent-orange); /* Orange accent */
+    border-radius: var(--border-radius-card) var(--border-radius-card) 0 0; /* Rounded top corners */
+    transition: background-color 0.3s ease, height 0.3s ease;
+    z-index: 0; /* Ensure it stays behind content if content wraps */
+}
+
+.testimonial-item:hover {
+    transform: translateY(-15px); /* More pronounced lift effect */
+    box-shadow: 0 28px 65px var(--shadow-pop); /* Stronger, more popping shadow */
+    border-color: var(--accent-green); /* Border changes to green on hover */
+}
+
+.testimonial-item:hover::before {
+    background-color: var(--primary-color); /* Accent changes to primary brown on hover */
+    height: 15px; /* Slightly taller on hover */
+}
+
+.testimonial-item p {
+    font-style: italic;
+    margin-bottom: 35px;
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.2em;
+    position: relative; /* Bring text above pseudo-element */
+    z-index: 1;
+}
+
+.testimonial-item .customer-name {
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: right;
+    margin-top: auto;
+    font-size: 1.25em;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* About Section */
+.about-section {
+    padding: 140px 0;
+    text-align: center;
+    background-color: var(--background-dark);
+}
+
+.about-section p {
+    max-width: 1000px;
+    margin: 0 auto 35px auto;
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 140px 0;
+    text-align: center;
+    background-color: var(--background-light);
+}
+
+.contact-section p {
+    font-size: 1.15em;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.contact-section strong {
+    color: var(--primary-color);
+}
+
+.contact-section a {
+    color: var(--accent-green);
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+    color: var(--primary-color);
+}
+
+.note {
+    font-style: italic;
+    margin-top: 35px;
+    color: #777;
+    font-size: 1.1em;
+}
+
+.map-placeholder {
+    margin-top: 70px;
+    border-radius: var(--border-radius-card);
+    overflow: hidden;
+    box-shadow: 0 15px 40px var(--shadow-medium);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid var(--primary-color); /* Stronger border around map */
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    height: 600px; /* Taller map for better visibility */
+    display: block;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 50px 0;
+    font-size: 1.15em;
+    letter-spacing: 0.5px;
+}
+
+/* Modal Styles (Cart/Checkout) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.88); /* Darker, more opaque overlay */
+    padding-top: 80px;
+    backdrop-filter: blur(5px); /* Subtle blur for unique effect */
+}
+
+.modal-content {
+    background-color: var(--background-light);
+    margin: 5% auto;
+    padding: 45px; /* More padding */
+    border-radius: 25px; /* More rounded */
+    width: 90%;
+    max-width: 750px; /* Wider modal */
+    position: relative;
+    box-shadow: 0 20px 50px var(--shadow-strong); /* Stronger shadow */
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    border: 5px solid var(--accent-green); /* Green border for modal */
+    /* Add flex-shrink: 0 to prevent content from shrinking if modal is too small */
+    flex-shrink: 0;
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 3.5em;
+    border-bottom: 3px solid var(--accent-orange);
+    padding-bottom: 15px;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+/* FIX: Ensure inputs display correctly within the modal */
+.modal-content input[type="number"],
+.modal-content input[type="text"],
+.modal-content input[type="tel"],
+.modal-content textarea {
+    width: 100%; /* Ensure full width within parent */
+    padding: 18px; /* More padding */
+    margin-bottom: 28px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-input); /* Consistent rounded corners for inputs */
+    font-size: 1.15em;
+    background-color: #fff;
+    color: var(--text-dark);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.08);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Crucial: Ensure padding is included in the width */
+    box-sizing: border-box;
+    /* Add max-width to prevent overflow within parent, even if something else pushes it */
+    max-width: 100%;
+}
+
+.modal-content input[type="number"]:focus,
+.modal-content input[type="text"]:focus,
+.modal-content input[type="tel"]:focus,
+.modal-content textarea:focus {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.4); /* Stronger green focus ring */
+    outline: none;
+}
+
+.modal-content textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.modal-content .btn {
+    width: 100%;
+    padding: 22px; /* Larger button */
+    margin-top: 35px;
+    font-size: 1.5em;
+}
+
+.close-button {
+    color: #888;
+    font-size: 48px; /* Larger close button */
+    font-weight: bold;
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color);
+    transform: rotate(90deg); /* Unique rotate effect */
+    cursor: pointer;
+}
+
+#cartItemsDisplay {
+    max-height: 420px; /* Taller cart items list */
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    padding: 25px; /* More padding */
+    border-radius: var(--border-radius-btn);
+    margin-bottom: 35px;
+    background-color: #fff;
+    box-shadow: inset 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.cart-item-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0; /* More padding */
+    border-bottom: 1px dashed #eee;
+    font-size: 1.15em;
+}
+
+.cart-item-entry:last-child {
+    border-bottom: none;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+    color: #555;
+}
+
+.cart-item-info span:first-child {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.cart-item-quantity {
+    width: 90px; /* Wider quantity input */
+    margin: 0 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1.1em;
+    /* Ensure this input also respects box-sizing */
+    box-sizing: border-box;
+}
+
+.remove-item-btn {
+    background-color: var(--danger-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.remove-item-btn:hover {
+    background-color: #bb2d3b;
+    transform: translateY(-2px);
+}
+
+.cart-summary {
+    text-align: right;
+    font-size: 2em; /* Larger total */
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding-top: 30px;
+    border-top: 5px solid var(--primary-color); /* Thicker border */
+    color: var(--primary-color);
+    letter-spacing: -0.01em;
+}
+
+.customer-details-form {
+    background-color: var(--background-dark);
+    border: 2px solid var(--accent-orange);
+    padding: 35px;
+    border-radius: var(--border-radius-card);
+    margin-top: 35px;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.08);
+    /* Ensure this container does not restrict its children incorrectly */
+    display: block; /* Ensure it's not trying to be flex/grid if not intended */
+    width: 100%; /* Ensure it takes full available width */
+}
+
+.customer-details-form h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 35px;
+    text-align: left;
+    border-bottom: 2px solid var(--accent-green);
+    padding-bottom: 15px;
+    font-size: 2.5em;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 30px;
+    }
+    h1 {
+        font-size: 4.5em;
+    }
+    h2 {
+        font-size: 3.5em;
+    }
+    h3 {
+        font-size: 2.8em;
+    }
+    nav ul li {
+        margin-left: 35px;
+    }
+    .menu-item {
+        gap: 40px;
+        padding: 30px;
+    }
+    .menu-item img {
+        width: 180px;
+        height: 180px;
+    }
+    .price {
+        font-size: 2em;
+    }
+    .size-toggle-btn {
+        min-width: 130px;
+    }
+    .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .map-placeholder iframe {
+        height: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0 20px;
+    }
+    h1 {
+        font-size: 3.8em;
+    }
+    h2 {
+        font-size: 3em;
+        margin-bottom: 60px;
+    }
+    h3 {
+        font-size: 2.5em;
+    }
+    nav ul li {
+        margin-left: 25px;
+    }
+    .hero {
+        padding: 120px 20px;
+        min-height: 650px;
+    }
+    .hero p {
+        font-size: 1.6em;
+    }
+    section {
+        padding: 100px 0;
+    }
+    .menu-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 25px;
+    }
+    .menu-item::before {
+        width: 100%; /* Make accent line full width on smaller screens */
+        height: 8px; /* Thicker horizontal line */
+        top: 0;
+        left: 0;
+        border-radius: var(--border-radius-card) var(--border-radius-card) 0 0; /* Apply border radius here */
+    }
+    .menu-item:hover::before {
+        height: 12px; /* Slightly taller on hover */
+        width: 100%;
+    }
+    .menu-item img {
+        width: 160px;
+        height: 160px;
+    }
+    h4 {
+        font-size: 2.1em;
+    }
+    .price {
+        font-size: 1.8em;
+    }
+    .add-to-cart-btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+    .size-toggle-group {
+        width: 90%;
+        max-width: 300px;
+    }
+    .size-toggle-btn {
+        min-width: 110px;
+        padding: 14px 20px;
+        font-size: 1.1em;
+    }
+    .current-pizza-price {
+        font-size: 1.8em;
+    }
+    .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 35px;
+    }
+    .testimonial-item {
+        padding: 35px;
+    }
+    .map-placeholder iframe {
+        height: 400px;
+    }
+    .modal-content {
+        max-width: 650px;
+        padding: 35px;
+    }
+    .modal-content h2 {
+        font-size: 3em;
+    }
+    .modal-content label {
+        font-size: 1.1em;
+    }
+    .modal-content input, .modal-content textarea {
+        padding: 15px;
+        font-size: 1.05em;
+    }
+    .cart-item-entry {
+        font-size: 1.1em;
+    }
+    .cart-item-quantity {
+        width: 80px;
+    }
+    .remove-item-btn {
+        padding: 10px 18px;
+    }
+    .cart-summary {
+        font-size: 1.8em;
+    }
+    .customer-details-form h3 {
+        font-size: 2.2em;
+    }
+    .modal-content .btn {
+        font-size: 1.3em;
+        padding: 18px;
+    }
+    .testimonial-item::before {
+        height: 8px; /* Thicker horizontal line */
+        width: 100%; /* Make accent line full width on smaller screens */
+        top: 0;
+        left: 0;
+    }
+    .testimonial-item:hover::before {
+        height: 12px; /* Slightly taller on hover */
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    header .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    .logo {
+        margin-bottom: 25px;
+        height: 65px;
+    }
+    nav {
+        width: 100%;
+        margin-top: 25px;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 10px 15px;
+    }
+    .cart-icon {
+        position: static;
+        margin-top: 25px;
+        order: 3; /* Push cart icon below nav on smaller screens */
+    }
+    .hero {
+        padding: 80px 15px;
+        min-height: 500px;
+    }
+    .hero h1 {
+        font-size: 3em;
+    }
+    .hero p {
+        font-size: 1.4em;
+    }
+    section {
+        padding: 80px 0;
+    }
+    h2 {
+        font-size: 2.5em;
+        margin-bottom: 50px;
+    }
+    h3 {
+        font-size: 2em;
+    }
+    .menu-item {
+        padding: 20px;
+        gap: 20px;
+    }
+    .menu-item img {
+        width: 140px;
+        height: 140px;
+    }
+    h4 {
+        font-size: 1.9em;
+    }
+    .price {
+        font-size: 1.7em;
+    }
+    .add-to-cart-btn {
+        width: 90%;
+        max-width: 220px;
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .size-toggle-group {
+        width: 100%; /* Allow full width on smaller screens */
+        max-width: 280px;
+    }
+    .size-toggle-btn {
+        min-width: unset; /* Allow buttons to shrink */
+        padding: 12px;
+        font-size: 1em;
+    }
+    .current-pizza-price {
+        font-size: 1.7em;
+    }
+    .testimonial-item {
+        padding: 30px;
+    }
+    .testimonial-item p {
+        font-size: 1.05em;
+    }
+    .map-placeholder iframe {
+        height: 320px;
+    }
+    .modal-content {
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .modal-content h2 {
+        font-size: 2.5em;
+    }
+    .modal-content label {
+        font-size: 1em;
+    }
+    /* Adjusted input/textarea styles for small screens to prevent overflow */
+    .modal-content input[type="number"],
+    .modal-content input[type="text"],
+    .modal-content input[type="tel"],
+    .modal-content textarea {
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 20px;
+        /* Ensure max-width is still 100% to prevent overflow */
+        max-width: 100%;
+    }
+    .cart-item-entry {
+        flex-wrap: wrap;
+        font-size: 1em;
+        padding: 10px 0;
+    }
+    .cart-item-info {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .cart-item-quantity {
+        margin: 5px 0;
+        width: 60px;
+    }
+    .remove-item-btn {
+        width: 100%;
+        margin-top: 8px;
+        padding: 8px 15px;
+    }
+    .cart-summary {
+        font-size: 1.5em;
+        padding-top: 20px;
+        margin-bottom: 30px;
+    }
+    .customer-details-form h3 {
+        font-size: 2em;
+    }
+    .modal-content .btn {
+        font-size: 1.2em;
+        padding: 15px;
+    }
+    .close-button {
+        font-size: 40px;
+        right: 20px;
+        top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 50px;
+    }
+    nav ul li {
+        margin: 5px 8px;
+        font-size: 0.9em;
+    }
+    .cart-icon {
+        font-size: 1.8em;
+    }
+    .hero h1 {
+        font-size: 2.5em;
+    }
+    .hero p {
+        font-size: 1.1em;
+    }
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    h3 {
+        font-size: 1.7em;
+    }
+    .menu-item {
+        padding: 15px;
+        gap: 15px;
+    }
+    .menu-item img {
+        width: 100px;
+        height: 100px;
+    }
+    h4 {
+        font-size: 1.6em;
+    }
+    .price {
+        font-size: 1.4em;
+    }
+    .add-to-cart-btn {
+        width: 100%;
+        max-width: 180px;
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .size-toggle-btn {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .current-pizza-price {
+        font-size: 1.4em;
+    }
+    .testimonial-item {
+        padding: 20px;
+    }
+    .testimonial-item p {
+        font-size: 0.95em;
+    }
+    .map-placeholder iframe {
+        height: 250px;
+    }
+    .modal-content {
+        padding: 15px;
+    }
+    .modal-content h2 {
+        font-size: 2em;
+    }
+    .modal-content label {
+        font-size: 0.9em;
+    }
+    .modal-content input, .modal-content textarea {
+        padding: 10px;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        max-width: 100%; /* Important for small screens */
+    }
+    .cart-item-entry {
+        font-size: 0.95em;
+    }
+    .cart-item-quantity {
+        width: 50px;
+    }
+    .remove-item-btn {
+        padding: 5px 10px;
+    }
+    .cart-summary {
+        font-size: 1.2em;
+        padding-top: 15px;
+    }
+    .customer-details-form h3 {
+        font-size: 1.6em;
+    }
+    .modal-content .btn {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+    .close-button {
+        font-size: 35px;
+        right: 15px;
+        top: 10px;
+    }
+}
