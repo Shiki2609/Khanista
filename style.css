@@ -48,335 +48,692 @@ body {
     -moz-osx-font-smoothing: grayscale;
     padding-top: 130px;
 }
-/* Reset & Base Styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--background-light);
-  color: var(--text-dark);
-  padding-top: var(--header-height);
+
+#main-header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: top 0.35s;
 }
 
 .container {
-  width: 94%;
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1280px; /* Slightly wider container */
+    margin: 0 auto;
+    padding: 0 40px; /* More horizontal padding for spaciousness */
 }
 
-/* ===================== */
-/* HEADER & NAVIGATION   */
-/* ===================== */
-header#main-header {
-  position: fixed;
-  top: 0;
-  left: 0; right: 0;
-  width: 100vw;
-  height: var(--header-height);
-  background: var(--primary);
-  z-index: 1000;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  transition: top 0.35s;
-}
-.hide-header {
-  top: -110px !important;
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    line-height: 1.2;
+    letter-spacing: -0.03em; /* Tighten letter spacing for headings */
 }
 
-header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--header-height);
-  position: relative;
-  flex-wrap: nowrap;
-  gap: 0;
+h1 {
+    font-size: 5.5em; /* Larger and more impactful */
+    text-shadow: 3px 4px 10px var(--dark-overlay); /* Defined shadow */
+    text-align: center;
+    color: var(--text-light); /* White for hero H1 */
+    font-weight: 900; /* Extra bold for impact */
 }
 
-.logo {
-  height: 72px;
-  width: 72px;
-  object-fit: contain;
-  margin-right: 22px;
-  flex-shrink: 0;
-  background: #fff;
-  border-radius: 14px;
+h2 {
+    font-size: 4em; /* More prominent section titles */
+    text-align: center;
+    margin-bottom: 70px; /* More space below section headings */
+    position: relative;
+    padding-bottom: 20px;
+    letter-spacing: -0.04em;
+    font-weight: 700;
 }
 
-nav {
-  flex: 1 1 auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-nav ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 48px;
-  height: 100%;
-}
-nav ul li {
-  margin: 0;
-}
-nav ul li a {
-  color: var(--text-light);
-  font-weight: bold;
-  font-size: 1.18em;
-  transition: color 0.3s, border-bottom 0.3s, transform 0.2s;
-  padding-bottom: 12px;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  display: block;
-}
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  background-color: var(--accent-green);
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: width 0.3s;
-}
-nav ul li a:hover::after {
-  width: 100%;
-}
-nav ul li a:hover {
-  color: var(--accent-green);
-  transform: translateY(-3px);
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 150px; /* Wider, more modern underline */
+    height: 6px; /* Thicker underline */
+    background-color: var(--accent-green);
+    border-radius: 3px;
 }
 
-/* Cart Icon in Header */
-.cart-icon {
-  position: relative;
-  cursor: pointer;
-  background: var(--accent-orange);
-  color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  height: 54px;
-  width: 54px;
-  font-size: 1.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 28px;
-  transition: background 0.2s;
-  box-shadow: 0 2px 8px var(--shadow-pop);
-}
-.cart-count {
-  position: absolute;
-  top: 8px; right: 8px;
-  background: var(--accent-green);
-  color: #fff;
-  border-radius: 50%;
-  padding: 2px 7px;
-  font-size: 0.97em;
-  min-width: 20px;
-  text-align: center;
-  border: 2px solid #fff;
-}
-.cart-icon:hover, .cart-icon:focus {
-  background: var(--accent-green);
-  color: var(--primary);
+h3 {
+    font-size: 3.2em; /* Stronger category titles */
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    position: relative;
+    letter-spacing: -0.02em;
+    font-weight: 700;
 }
 
-/* Hamburger Menu (Mobile only) */
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Subtle underline for categories */
+    height: 3px;
+    background-color: var(--accent-orange);
+    border-radius: 2px;
+}
+
+h4 {
+    font-size: 2.4em; /* Item titles */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em; /* Slightly larger body text */
+    color: #444;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-green);
+}
+
+/* Hamburger styles */
 .hamburger {
   display: none;
   flex-direction: column;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
   justify-content: center;
   align-items: center;
-  height: 44px;
-  width: 48px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-  z-index: 1100;
+  z-index: 1002;
+  margin-left: auto;
 }
 .hamburger span {
   height: 4px;
-  width: 32px;
+  width: 100%;
   background: #fff;
-  margin: 3px 0;
+  margin: 4px 0;
   border-radius: 2px;
   transition: all 0.3s;
 }
 
-/* Hamburger open/close animation */
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-@media (max-width: 900px) {
-  nav ul { gap: 18px; }
-  .cart-icon { margin-left: 12px; }
-}
-
 @media (max-width: 768px) {
-  header#main-header {
-    height: 70px;
-  }
-  body {
-    padding-top: 72px;
-  }
-  header .container {
-    height: 70px;
-  }
-  .logo {
-    height: 42px;
-    width: 42px;
-    margin-right: 8px;
-  }
-  nav {
-    position: absolute;
-    left: 0; right: 0;
-    top: 70px;
-    width: 100vw;
-    background: var(--primary);
-    z-index: 1001;
-  }
+  .hamburger { display: flex; }
   nav ul {
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 0;
-    display: none;
+    position: absolute;
+    top: 90px; /* height of header */
+    left: 0;
     width: 100vw;
-    margin: 0;
-    border-top: 1px solid #fff3;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    background: #754634; /* match your header color */
+    display: none;
+    z-index: 1001;
   }
   nav ul.open {
     display: flex;
   }
   nav ul li {
-    margin: 0;
-    width: 100%;
+    margin: 18px 0;
     text-align: center;
-    border-bottom: 1px solid #fff2;
   }
-  nav ul li:last-child {
-    border-bottom: none;
-  }
-  .cart-icon {
-    margin-left: 2px;
-    height: 38px;
-    width: 38px;
-    font-size: 1.2em;
-  }
-  .hamburger {
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    padding: 18px 40px; /* Larger, more substantial buttons */
+    border: none;
+    border-radius: var(--border-radius-btn);
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    text-decoration: none;
+    position: relative; /* For subtle pseudo-element effect */
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Subtle hover overlay */
+    transition: left 0.3s ease;
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+.btn:hover {
+    background-color: #3e8e41;
+    transform: translateY(-7px); /* More pronounced lift effect */
+    box-shadow: 0 15px 35px var(--shadow-strong);
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 30px 0; /* Increased padding */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 25px var(--shadow-strong);
+    border-bottom: 5px solid var(--accent-orange); /* Stronger bottom accent */
+}
+
+header .container {
     display: flex;
-  }
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 80px; /* Larger logo */
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3)); /* Subtle shadow for logo */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 45px; /* More spacing between nav items */
+}
+
+nav ul li a {
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 1.25em;
+    transition: color 0.3s ease, border-bottom 0.3s ease, transform 0.2s ease;
+    padding-bottom: 12px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-green);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: var(--accent-green);
+    transform: translateY(-3px);
+}
+
+/* Cart Icon in Header */
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 2.5em; /* Larger icon */
+    margin-left: 40px;
+    padding: 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-icon:hover {
+    color: var(--accent-green);
+    transform: scale(1.25);
+}
+
+.cart-count {
+    position: absolute;
+    top: -12px;
+    right: -18px;
+    background-color: var(--accent-orange);
+    color: var(--text-light);
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    min-width: 32px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border: 3px solid var(--text-light); /* More prominent border */
 }
 
 /* Hero Section */
 .hero {
-  background: var(--primary);
-  color: var(--text-light);
-  padding: 70px 0 40px 0;
-  text-align: center;
+    background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), url('images/hero-bg.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: var(--text-light);
+    text-align: center;
+    padding: 180px 40px; /* More generous padding */
+    min-height: 800px; /* Taller hero for impact */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* For subtle background patterns if added */
 }
-.hero-logo {
-  height: 80px;
-  margin-bottom: 14px;
-}
-.hero h1 {
-  margin: 0 0 10px 0;
-  font-size: 2.7em;
-  font-weight: bold;
-}
+
 .hero p {
-  font-size: 1.25em;
-  margin-bottom: 20px;
-}
-.btn {
-  background: var(--accent-green);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 14px 32px;
-  font-size: 1.1em;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 2px 7px var(--shadow-pop);
-  transition: background 0.2s;
-}
-.btn:hover, .btn:focus {
-  background: var(--accent-orange);
-  color: var(--primary);
+    font-size: 2em; /* Larger, more impactful description */
+    margin-bottom: 70px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255,255,255,0.95);
+    font-weight: 300; /* Lighter weight for balance */
 }
 
-@media (max-width: 600px) {
-  .hero h1 { font-size: 1.5em; }
-  .hero p { font-size: 1em; }
-  .btn { width: 90%; max-width: 260px; }
+
+/* Section Common Styles */
+section {
+    padding: 140px 0; /* More vertical padding for all sections */
+    background-color: var(--background-dark);
+    position: relative;
+    z-index: 1; /* Ensure sections stack correctly with dividers */
 }
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0; top: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.45);
-  justify-content: center;
-  align-items: center;
+section:nth-of-type(odd) {
+    background-color: var(--background-light);
 }
-.modal-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 32px 22px;
-  max-width: 375px;
-  width: 95vw;
-  box-shadow: 0 4px 32px rgba(80,40,5,0.09);
-  position: relative;
+
+/* Unique Section Divider - Example using pseudo-elements */
+.section-divider-top::before, .section-divider-bottom::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 80px; /* Height of the divider */
+    background-color: inherit; /* Inherit current section background */
+    z-index: -1;
 }
-.close-button {
-  position: absolute;
-  top: 12px; right: 16px;
-  font-size: 2em;
-  color: var(--primary);
-  background: none;
-  border: none;
-  cursor: pointer;
+
+.section-divider-top::before {
+    top: -40px; /* Halfway up the previous section */
+    transform: skewY(-2deg); /* Subtle diagonal cut */
+    transform-origin: top left;
+}
+
+.section-divider-bottom::after {
+    bottom: -40px; /* Halfway into the next section */
+    transform: skewY(-2deg); /* Subtle diagonal cut */
+    transform-origin: bottom right;
+}
+
+/* Apply section dividers to relevant sections */
+#menu, #testimonials, #about, #contact {
+    position: relative;
+}
+#menu::before {
+    content: '';
+    position: absolute;
+    top: -70px; /* Adjust based on section padding and desired overlap */
+    left: 0;
+    width: 100%;
+    height: 100px; /* Height of the divider band */
+    background-color: var(--background-dark); /* Color of the band */
+    transform: skewY(-2deg); /* Unique angle */
+    transform-origin: top left;
+    z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+#testimonials::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--background-light);
+    transform: skewY(2deg); /* Opposite angle */
+    transform-origin: top right;
+    z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--background-dark);
+    transform: skewY(-2deg);
+    transform-origin: top left;
+    z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+/* No divider for contact section top as it's the last content section */
+
+
+/* Menu Section */
+.menu-category {
+    margin-bottom: 120px; /* More space between categories */
+    padding: 50px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* More space between image and details */
+    margin-bottom: 50px;
+    background-color: var(--text-light);
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 15px 40px var(--shadow-soft); /* Softer, more modern shadow */
+    padding: 35px; /* More padding inside card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Add border-color transition */
+    border: 3px solid var(--background-dark); /* Initial border */
+    position: relative; /* For brand accent */
+}
+
+/* Brand Accent on Menu Items - "Screams Khanista" with color change */
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px; /* Thicker initial accent strip */
+    height: 100%;
+    background-color: var(--accent-orange); /* Orange accent */
+    border-radius: var(--border-radius-card) 0 0 var(--border-radius-card); /* Rounded top-left, bottom-left */
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-15px); /* More pronounced lift effect */
+    box-shadow: 0 28px 65px var(--shadow-pop); /* Stronger, more popping shadow */
+    border-color: var(--accent-green); /* Border changes to green on hover */
+}
+
+.menu-item:hover::before {
+    background-color: var(--primary-color); /* Accent changes to primary brown on hover */
+    width: 15px; /* Slightly wider on hover */
+}
+
+
+.menu-item img {
+    width: 220px; /* Larger images */
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 4px solid var(--background-dark);
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-details p {
+    font-size: 1.15em;
+    color: #555;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.price {
+    font-size: 2.2em; /* Larger, more prominent price */
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-right: 25px;
+    letter-spacing: -0.02em;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: var(--accent-green);
+    padding: 14px 30px;
+    font-size: 1.15em;
+    border-radius: var(--border-radius-btn);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.add-to-cart-btn:hover {
+    background-color: #3e8e41;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* --- Pizza Size Toggle Styles --- */
+.pizza-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.size-toggle-group {
+    display: flex;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius-btn);
+    overflow: hidden;
+    position: relative;
+    background-color: var(--background-dark);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.size-toggle-btn {
+    flex: 1;
+    padding: 16px 30px; /* More padding */
+    border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+    letter-spacing: 0.5px;
+}
+
+.size-toggle-btn.active {
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transform: scale(1.06);
+    z-index: 1;
+}
+
+.size-toggle-btn:not(.active):hover {
+    background-color: var(--background-light);
+    color: var(--accent-orange);
+    transform: translateY(-3px);
+}
+
+.current-pizza-price {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-left: 0;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--background-light);
+    padding: 140px 0;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Larger min-width */
+    gap: 45px; /* More space between testimonials */
+    margin-top: 60px;
+}
+
+.testimonial-item {
+    background-color: var(--text-light);
+    padding: 45px; /* More padding */
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 15px 40px var(--shadow-soft);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 3px solid var(--background-dark); /* Initial border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brand Accent on Testimonial Items - "Screams Khanista" */
+.testimonial-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px; /* Accent bar at the top */
+    background-color: var(--accent-orange); /* Orange accent */
+    border-radius: var(--border-radius-card) var(--border-radius-card) 0 0; /* Rounded top corners */
+    transition: background-color 0.3s ease, height 0.3s ease;
+    z-index: 0; /* Ensure it stays behind content if content wraps */
+}
+
+.testimonial-item:hover {
+    transform: translateY(-15px); /* More pronounced lift effect */
+    box-shadow: 0 28px 65px var(--shadow-pop); /* Stronger, more popping shadow */
+    border-color: var(--accent-green); /* Border changes to green on hover */
+}
+
+.testimonial-item:hover::before {
+    background-color: var(--primary-color); /* Accent changes to primary brown on hover */
+    height: 15px; /* Slightly taller on hover */
+}
+
+.testimonial-item p {
+    font-style: italic;
+    margin-bottom: 35px;
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.2em;
+    position: relative; /* Bring text above pseudo-element */
+    z-index: 1;
+}
+
+.testimonial-item .customer-name {
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: right;
+    margin-top: auto;
+    font-size: 1.25em;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* About Section */
+.about-section {
+    padding: 140px 0;
+    text-align: center;
+    background-color: var(--background-dark);
+}
+
+.about-section p {
+    max-width: 1000px;
+    margin: 0 auto 35px auto;
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 140px 0;
+    text-align: center;
+    background-color: var(--background-light);
+}
+
+.contact-section p {
+    font-size: 1.15em;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.contact-section strong {
+    color: var(--primary-color);
+}
+
+.contact-section a {
+    color: var(--accent-green);
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+    color: var(--primary-color);
+}
+
+.note {
+    font-style: italic;
+    margin-top: 35px;
+    color: #777;
+    font-size: 1.1em;
+}
+
+.map-placeholder {
+    margin-top: 70px;
+    border-radius: var(--border-radius-card);
+    overflow: hidden;
+    box-shadow: 0 15px 40px var(--shadow-medium);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid var(--primary-color); /* Stronger border around map */
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    height: 600px; /* Taller map for better visibility */
+    display: block;
 }
 
 /* Footer */
 footer {
-  background: var(--primary);
-  color: var(--text-light);
-  text-align: center;
-  padding: 26px 0 18px 0;
-  font-size: 1em;
-  margin-top: 40px;
-}
-
-@media (max-width: 500px) {
-  .modal-content {
-    padding: 18px 6px;
-    font-size: 0.98em;
-  }
-  footer {
-    font-size: 0.96em;
-    padding: 18px 0 10px 0;
-  }
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 50px 0;
+    font-size: 1.15em;
+    letter-spacing: 0.5px;
 }
 
 /* Modal Styles (Cart/Checkout) */
