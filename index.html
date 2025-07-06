@@ -468,13 +468,13 @@
         </div>
     </section>
   </main>
-    <footer>
-        <div class="container">
-            <p>© 2025 Khanista. All rights reserved.</p>
-        </div>
-    </footer>
+  <footer>
+      <div class="container">
+          <p>© 2025 Khanista. All rights reserved.</p>
+      </div>
+  </footer>
 
-     <!-- Cart Modal -->
+  <!-- Cart Modal -->
   <div id="cartModal" class="modal">
     <div class="modal-content">
       <span class="close-button">×</span>
@@ -485,17 +485,86 @@
       <div class="cart-summary">
         <p>Total: <span id="cartTotal">R0.00</span></p>
       </div>
-      <div class="customer-details-form">
-        <h3>Your Details</h3>
-        <label for="customerName">Your Name:</label>
-        <input type="text" id="customerName" required>
-        <label for="customerPhone">Your Phone Number (WhatsApp):</label>
-        <input type="tel" id="customerPhone" placeholder="e.g., 0821234567" required>
-        <button id="sendOrderWhatsApp" class="btn">Order via WhatsApp</button>
+      <!-- Improved Order Form replaces old customer details form -->
+      <div class="order-form-container" id="orderFormContainer">
+        <div class="form-header">
+          <h2>Complete Your Order</h2>
+          <p>Fill in your details to proceed with your delicious order</p>
+        </div>
+        <div class="form-content">
+          <!-- Customer Details Section -->
+          <div class="form-section">
+            <h3 class="section-title">Your Details</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="customerName">Full Name *</label>
+                <input type="text" id="customerName" name="customerName" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="customerPhone">Phone Number *</label>
+                <input type="tel" id="customerPhone" name="customerPhone" class="form-input" required>
+              </div>
+          <!-- Delivery Option Section -->
+          <div class="form-section">
+            <h3 class="section-title">Delivery Option</h3>
+            <div class="delivery-section">
+              <div class="delivery-toggle" id="deliveryToggle">
+                <div class="toggle-slider" id="toggleSlider"></div>
+                <div class="toggle-options">
+                  <div class="toggle-option active" id="pickupOption">
+                    <div class="option-text">PICKUP</div>
+                    <div class="option-price">Free</div>
+                  </div>
+                  <div class="toggle-option inactive" id="deliveryOption">
+                    <div class="option-text">DELIVERY</div>
+                    <div class="option-price">+R20</div>
+                  </div>
+                </div>
+              </div>
+              <div class="swipe-hint">Tap to toggle or swipe left/right</div>
+              <div class="address-section" id="addressSection">
+                <label class="form-label" for="customerAddress">Delivery Address *</label>
+                <textarea id="customerAddress" name="customerAddress"
+                  class="address-textarea"
+                  placeholder="Enter your full delivery address including street name, area, and any helpful landmarks..."></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- Order Summary Section -->
+          <div class="form-section">
+            <h3 class="section-title">Order Summary</h3>
+            <div class="total-section">
+              <div class="total-row">
+                <span>Subtotal:</span>
+                <span class="total-amount">R<span id="subtotal">0.00</span></span>
+              </div>
+              <div class="total-row">
+                <span>Delivery Fee:</span>
+                <span class="total-amount">R<span id="deliveryFee">0.00</span></span>
+              </div>
+              <div class="total-row final">
+                <span>Total:</span>
+                <span class="total-amount">R<span id="total">0.00</span></span>
+              </div>
+            </div>
+          </div>
+          <!-- Special Instructions Section -->
+          <div class="form-section">
+            <h3 class="section-title">Special Instructions</h3>
+            <div class="notes-section">
+              <label class="form-label" for="notes">Additional Notes (Optional)</label>
+              <textarea id="notes" name="notes"
+                class="notes-textarea"
+                placeholder="Any special instructions, dietary requirements, or preferences..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn" id="sendOrderWhatsApp">
+            Send Order via WhatsApp
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  
   <script src="script.js"></script>
 </body>
 </html>
