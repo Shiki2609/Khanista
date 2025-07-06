@@ -779,42 +779,73 @@ footer p {
 
 /* --- Cart Modal Styles --- */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2000; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-    display: flex; /* Use flexbox for centering */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Padding around the modal content */
+    padding: 20px;
 }
 
 .modal-content {
     background-color: var(--background-light);
     margin: auto;
-    padding: 40px; /* Increased padding */
+    padding: 40px;
     border-radius: var(--border-radius-card);
     box-shadow: var(--shadow-pop);
-    width: 90%; /* Default width */
-    max-width: 700px; /* Max width for larger screens */
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
-    animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+    animation: fadeIn 0.3s ease-out;
+    border: 3px solid var(--background-dark);
 }
+
+
+.modal-content textarea {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 28px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-input);
+    font-size: 1.15em;
+    background-color: #fff;
+    color: var(--text-dark);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.08);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.modal-content textarea:focus {
+border-color: var(--accent-green);
+box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.4);
+outline: none;
+}
+
+.modal-content textarea {
+resize: vertical;
+min-height: 120px;
+}
+
 
 .close-button {
     color: var(--text-dark);
-    font-size: 3em; /* Larger close button */
+    font-size: 3em;
     font-weight: bold;
     position: absolute;
     top: 15px;
     right: 25px;
     cursor: pointer;
     transition: color 0.3s ease;
+    z-index: 1;
 }
 
 .close-button:hover,
@@ -829,50 +860,72 @@ footer p {
     color: var(--primary-color);
     margin-bottom: 30px;
     font-size: 3em;
+    margin-top: 0;
 }
 
 #cartItemsDisplay {
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px dashed var(--background-dark);
-    max-height: 40vh; /* Limit height for scrollable cart items */
-    overflow-y: auto; /* Enable scrolling for many items */
+    border-bottom: 2px solid var(--background-dark);
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .cart-item-entry {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px dotted #ccc;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    gap: 15px;
 }
 
 .cart-item-entry:last-child {
     border-bottom: none;
 }
 
-.cart-item-info span {
+.cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cart-item-info .item-name {
     font-size: 1.1em;
+    font-weight: bold;
     color: var(--text-dark);
 }
 
-.cart-item-info span:first-child {
-    font-weight: bold;
-    margin-right: 15px;
+.cart-item-info .item-price {
+    font-size: 1em;
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .cart-item-quantity {
     width: 60px;
     padding: 8px;
-    border: 1px solid var(--background-dark);
+    border: 2px solid var(--background-dark);
     border-radius: var(--border-radius-input);
     text-align: center;
     font-size: 1em;
-    margin: 0 15px;
+    background-color: white;
+}
+
+.cart-item-quantity:focus {
+    border-color: var(--accent-green);
+    outline: none;
 }
 
 .remove-item-btn {
-    background-color: #f44336; /* Red for remove */
+    background-color: #f44336;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -887,12 +940,15 @@ footer p {
 }
 
 #cartTotalContainer {
-    text-align: right;
-    font-size: 1.5em;
+    text-align: center;
+    font-size: 1.8em;
     font-weight: bold;
     color: var(--primary-color);
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-card);
+    border: 2px solid var(--accent-green);
 }
 
 .customer-info-form {
@@ -903,33 +959,367 @@ footer p {
 }
 
 .customer-info-form label {
-    font-weight: bold;
-    color: var(--text-dark);
-    font-size: 1em;
+    font-weight: 600; /* Slightly bolder */
+    color: var(--primary-color); /* Use primary brand color */
+    font-size: 1em; /* Slightly larger */
+    margin-bottom: 5px; /* Space between label and input */
+    display: block; /* Ensures label is on its own line */
 }
 
 .customer-info-form input,
 .customer-info-form textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid var(--background-dark);
-    border-radius: var(--border-radius-input);
-    font-size: 1em;
+    padding: 15px 20px; /* More generous padding */
+    border: 2px solid var(--background-dark);
+    border-radius: var(--border-radius-input); /* Use defined variable */
+    font-size: 1em; /* Slightly larger text in fields */
     color: var(--text-dark);
-    background-color: var(--background-light);
+    background-color: var(--text-light); /* White background for inputs */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.08); /* Subtle inner shadow */
 }
 
 .customer-info-form input:focus,
 .customer-info-form textarea:focus {
     border-color: var(--accent-green);
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25);
     outline: none;
+}
+
+.customer-info-form textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 120px; /* Minimum height for textarea */
+}
+
+ils-form {
+background-color: var(--background-dark);
+border: 2px solid var(--accent-orange);
+padding: 35px;
+border-radius: var(--border-radius-card);
+margin-top: 35px;
+box-shadow: inset 0 4px 12px rgba(0,0,0,0.08);
+display: block;
+width: 100%;
+}
+
+/* Customer Details Form */
+.customer-details-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-top: 35px;
+}
+
+.customer-details-form h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 2.2em;
+}
+
+.customer-details-form .form-subtitle {
+    font-size: 1.1em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.customer-info-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.customer-info-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-info-form .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.customer-info-form label {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.customer-info-form input,
+.customer-info-form textarea {
+    width: 100%;
+    padding: 15px 18px;
+    border: 2px solid var(--background-dark);
+    border-radius: var(--border-radius-input);
+    font-size: 1em;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.08);
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.customer-info-form input:focus,
+.customer-info-form textarea:focus {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25);
+    outline: none;
+}
+
+.customer-info-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+ .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .full-width {
+            width: 100%;
+        }
+        
+        .delivery-toggle-container {
+            margin-bottom: 20px;
+        }
+        
+        .delivery-toggle-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .delivery-toggle {
+            position: relative;
+            width: 300px;
+            height: 60px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .delivery-toggle:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 145px;
+            height: 50px;
+            background: linear-gradient(135deg, #2196F3, #9C27B0);
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-slider.delivery {
+            transform: translateX(145px);
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+        }
+        
+        .toggle-options {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        
+        .toggle-option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-option.active {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .toggle-option.inactive {
+            color: #666;
+        }
+        
+        .option-text {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .option-price {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        
+        .address-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff9c4 100%);
+            border-radius: 10px;
+            border: 2px solid #FFE0B2;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform: translateY(-10px);
+        }
+        
+        .address-section.show {
+            opacity: 1;
+            max-height: 200px;
+            transform: translateY(0);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #FF6B6B;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        }
+        
+        .total-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            border: 2px solid #dee2e6;
+            font-weight: bold;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .total-final {
+            font-size: 1.2em;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #dee2e6;
+            color: #2196F3;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 25px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        
+        .swipe-hint {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        /* --- Modern Vertical Stacked Form Layout for Order Form --- */
+.form-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.form-row {
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    gap: 22px; /* Spacing between form groups */
+    width: 100%;
+    margin-bottom: 0;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form-label {
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #34495e;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+}
+.form-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e1e8ed;
+    border-radius: 12px;
+    background: #f8f9fa;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    font-family: inherit;
+    color: #2c3e50;
+    margin-bottom: 0;
+    box-shadow: 0 1px 6px rgba(102, 126, 234, 0.10);
+}
+.form-input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.12);
+}
+@media (max-width: 768px) {
+    .form-row {
+        gap: 16px;
+    }
+}
+
+/* Optionally, add a little extra space below the entire "Your Details" section */
+.form-section .form-row:last-child {
+    margin-bottom: 12px;
 }
 
 #sendOrderWhatsApp {
     width: 100%;
-    padding: 18px;
+    padding: 20px;
     background-color: var(--accent-green);
     color: var(--text-light);
     border: none;
@@ -937,14 +1327,17 @@ footer p {
     font-size: 1.4em;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: var(--shadow-medium);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 20px;
 }
 
 #sendOrderWhatsApp:hover {
     background-color: #3e8e41;
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-strong);
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
 }
 
 #sendOrderWhatsApp:disabled {
@@ -1295,10 +1688,14 @@ footer p {
     }
     .customer-info-form input,
     .customer-info-form textarea {
-        padding: 10px;
-        font-size: 0.9em;
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .customer-info-form textarea {
+        min-height: 90px; /* Smaller min height for mobile textarea */
     }
     #sendOrderWhatsApp {
+        padding: 15px;
         font-size: 1.1em;
         padding: 12px;
     }
